@@ -25,8 +25,8 @@ public class App {
 			if(s.endsWith(".class"))
 				try
 				{
-					Class class = cl.loadClass("src.promo." + s.substring(0,s.length()-6));
-					promos.add((CalculaMilhas)class.newInstance());
+					Class c = cl.loadClass("src.promo." + s.substring(0,s.length()-6));
+					promos.add((CalculaMilhas)c.newInstance());
 				}
 				catch(Exception e)
 				{
@@ -61,6 +61,10 @@ public class App {
 					break;
 
 				case "2":
+					if(promos.size() < 1){
+						System.out.println("não tem promos");
+					break;
+			}
 					System.out.println();
 					int i = 1;
 					for(CalculaMilhas p : promos)
